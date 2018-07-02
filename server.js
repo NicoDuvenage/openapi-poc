@@ -11,7 +11,7 @@ async function connectDatabase () {
 
 const init = async function() {
 
-    const server = new Hapi.Server();
+    const server = new Hapi.Server({port: 3005});
 
     await server.register({
         plugin: HapiOpenAPI,

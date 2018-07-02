@@ -1,7 +1,7 @@
 'use strict';
 
 const Db = require('@mojaloop/central-services-database').Db
-
+    
 /**
  * Operations on /participants
  */
