@@ -1,0 +1,1020 @@
+{
+    "swagger": "2.0",
+    "host": "vgenev-Latitude-E5570:3001",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "info": {
+        "title": "Central Ledger API Documentation",
+        "version": "2.4.0-snapshot"
+    },
+    "tags": [],
+    "paths": {
+        "/charge": {
+            "get": {
+                "summary": "List all charges",
+                "operationId": "getCharge",
+                "tags": [
+                    "charge"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new charge",
+                "operationId": "postCharge",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_2"
+                        }
+                    }
+                ],
+                "tags": [
+                    "charge"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "summary": "Status of ledger admin api",
+                "operationId": "getHealth",
+                "tags": [
+                    "health"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/participants": {
+            "get": {
+                "operationId": "getParticipants",
+                "tags": [
+                    "participants"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "postParticipants",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_3"
+                        }
+                    }
+                ],
+                "tags": [
+                    "participants"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/parties": {
+            "get": {
+                "summary": "List party",
+                "operationId": "getParties",
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create new party",
+                "operationId": "postParties",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_4"
+                        }
+                    }
+                ],
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/permissions": {
+            "get": {
+                "summary": "List available permissions",
+                "operationId": "getPermissions",
+                "tags": [
+                    "permissions"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/positions": {
+            "get": {
+                "summary": "List positions for all Participants",
+                "operationId": "getPositions",
+                "tags": [
+                    "positions"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/role": {
+            "get": {
+                "summary": "List all role",
+                "operationId": "getRole",
+                "tags": [
+                    "role"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new role",
+                "operationId": "postRole",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_5"
+                        }
+                    }
+                ],
+                "tags": [
+                    "role"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/transfers": {
+            "get": {
+                "summary": "List all transfers",
+                "operationId": "getTransfers",
+                "tags": [
+                    "transfers"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "summary": "Status of ledger admin api",
+                "operationId": "get",
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/participants/{name}": {
+            "get": {
+                "operationId": "getParticipantsName",
+                "tags": [
+                    "participants"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                },
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Participant name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_8"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "operationId": "putParticipantsName",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Participant name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_8"
+                        }
+                    }
+                ],
+                "tags": [
+                    "participants"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/parties/{id}": {
+            "get": {
+                "summary": "View party details",
+                "operationId": "getPartiesId",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Party Id",
+                        "x-format": {
+                            "guid": true
+                        },
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update party details",
+                "operationId": "putPartiesId",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Party Id",
+                        "x-format": {
+                            "guid": true
+                        },
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_9"
+                        }
+                    }
+                ],
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete party",
+                "operationId": "deletePartiesId",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Party Id",
+                        "x-format": {
+                            "guid": true
+                        },
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/positions/{name}": {
+            "get": {
+                "summary": "View position for an Participant",
+                "operationId": "getPositionsName",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Participant Name required",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "positions"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/parties/{id}/role": {
+            "get": {
+                "summary": "Get party role",
+                "operationId": "getPartiesIdRole",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Party Id",
+                        "x-format": {
+                            "guid": true
+                        },
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Update party role",
+                "operationId": "postPartiesIdRole",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Party Id",
+                        "x-format": {
+                            "guid": true
+                        },
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "$ref": "#/definitions/Model_6"
+                        }
+                    }
+                ],
+                "tags": [
+                    "parties"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/auth_token": {
+            "post": {
+                "summary": "Get a token for admin authentication",
+                "operationId": "postAuth_token",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_1"
+                        }
+                    }
+                ],
+                "tags": [
+                    "auth_token"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/webhooks/reject-expired-tokens": {
+            "post": {
+                "summary": "Reject expired tokens",
+                "operationId": "postWebhooksRejectexpiredtokens",
+                "tags": [
+                    "webhooks"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/webhooks/reject-expired-transfers": {
+            "post": {
+                "summary": "Reject expired transfers",
+                "operationId": "postWebhooksRejectexpiredtransfers",
+                "tags": [
+                    "webhooks"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/webhooks/settle-transfers": {
+            "post": {
+                "summary": "Settle fulfilled transfers",
+                "operationId": "postWebhooksSettletransfers",
+                "tags": [
+                    "webhooks"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/charge/{name}": {
+            "put": {
+                "summary": "Update a charge",
+                "operationId": "putChargeName",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Charge name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Model_7"
+                        }
+                    }
+                ],
+                "tags": [
+                    "charge"
+                ],
+                "responses": {
+                    "default": {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Model_1": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Login key"
+                }
+            },
+            "required": [
+                "key"
+            ]
+        },
+        "Model_2": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the charge",
+                    "maxLength": 256,
+                    "x-format": {
+                        "token": true
+                    }
+                },
+                "charge_type": {
+                    "type": "string",
+                    "description": "Type of the charge",
+                    "enum": [
+                        "fee"
+                    ]
+                },
+                "rate_type": {
+                    "type": "string",
+                    "description": "Rate type of the charge",
+                    "enum": [
+                        "percent",
+                        "flat"
+                    ]
+                },
+                "rate": {
+                    "type": "number",
+                    "description": "Rate for the charge"
+                },
+                "minimum": {
+                    "type": "number",
+                    "description": "Minimum amount for the charge"
+                },
+                "maximum": {
+                    "type": "number",
+                    "description": "Maximum amount for the charge"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Code for the charger",
+                    "maxLength": 256,
+                    "x-format": {
+                        "token": true
+                    }
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "description": "Status for charge"
+                },
+                "payerParticipantId": {
+                    "type": "string",
+                    "description": "Payer of the charged fee",
+                    "enum": [
+                        "sender",
+                        "receiver",
+                        "ledger"
+                    ]
+                },
+                "payeeParticipantId": {
+                    "type": "string",
+                    "description": "Payee of the charged fee",
+                    "enum": [
+                        "sender",
+                        "receiver",
+                        "ledger"
+                    ]
+                }
+            },
+            "required": [
+                "name",
+                "charge_type",
+                "rate_type",
+                "rate",
+                "code",
+                "is_active",
+                "payerParticipantId",
+                "payeeParticipantId"
+            ]
+        },
+        "Model_3": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the participant",
+                    "minLength": 3,
+                    "maxLength": 30,
+                    "x-format": {
+                        "alphanum": true
+                    }
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Currency code of the participant",
+                    "enum": [
+                        "ALL",
+                        "AFN",
+                        "ARS",
+                        "AWG",
+                        "AUD",
+                        "AZN",
+                        "BSD",
+                        "BBD",
+                        "BYN",
+                        "BZD",
+                        "BMD",
+                        "BOB",
+                        "BAM",
+                        "BWP",
+                        "BGN",
+                        "BRL",
+                        "BND",
+                        "KHR",
+                        "CAD",
+                        "KYD",
+                        "CLP",
+                        "CNY",
+                        "COP",
+                        "CRC",
+                        "HRK",
+                        "CUP",
+                        "CZK",
+                        "DKK",
+                        "DOP",
+                        "XCD",
+                        "EGP",
+                        "SVC",
+                        "EUR",
+                        "FKP",
+                        "FJD",
+                        "GHS",
+                        "GIP",
+                        "GTQ",
+                        "GGP",
+                        "GYD",
+                        "HNL",
+                        "HKD",
+                        "HUF",
+                        "ISK",
+                        "INR",
+                        "IDR",
+                        "IRR",
+                        "IMP",
+                        "ILS",
+                        "JMD",
+                        "JPY",
+                        "JEP",
+                        "KZT",
+                        "KPW",
+                        "KRW",
+                        "KGS",
+                        "LAK",
+                        "LBP",
+                        "LRD",
+                        "MKD",
+                        "MYR",
+                        "MUR",
+                        "MXN",
+                        "MNT",
+                        "MZN",
+                        "NAD",
+                        "NPR",
+                        "ANG",
+                        "NZD",
+                        "NIO",
+                        "NGN",
+                        "NOK",
+                        "OMR",
+                        "PKR",
+                        "PAB",
+                        "PYG",
+                        "PEN",
+                        "PHP",
+                        "PLN",
+                        "QAR",
+                        "RON",
+                        "RUB",
+                        "SHP",
+                        "SAR",
+                        "RSD",
+                        "SCR",
+                        "SGD",
+                        "SBD",
+                        "SOS",
+                        "ZAR",
+                        "LKR",
+                        "SEK",
+                        "CHF",
+                        "SRD",
+                        "SYP",
+                        "TWD",
+                        "THB",
+                        "TTD",
+                        "TRY",
+                        "TVD",
+                        "UAH",
+                        "GBP",
+                        "USD",
+                        "UYU",
+                        "UZS",
+                        "VEF",
+                        "VND",
+                        "YER",
+                        "ZWD"
+                    ]
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "Model_4": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Login key"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "key",
+                "email"
+            ]
+        },
+        "permissions": {
+            "type": "array",
+            "description": "Role permissions",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "PARTICIPANTS_CREATE",
+                    "PARTICIPANTS_LIST",
+                    "PARTICIPANTS_VIEW",
+                    "PARTICIPANTS_UPDATE",
+                    "POSITIONS_LIST",
+                    "POSITIONS_VIEW",
+                    "CHARGE_LIST",
+                    "CHARGE_CREATE",
+                    "CHARGE_UPDATE",
+                    "PERMISSIONS_LIST",
+                    "ROLE_CREATE",
+                    "ROLE_DELETE",
+                    "ROLE_LIST",
+                    "ROLE_UPDATE",
+                    "TOKENS_REJECT_EXPIRED",
+                    "TRANSFERS_REJECT_EXPIRED",
+                    "TRANSFERS_SETTLE",
+                    "TRANSFERS_LIST",
+                    "PARTIES_CREATE",
+                    "PARTIES_DELETE",
+                    "PARTIES_LIST",
+                    "PARTIES_VIEW",
+                    "PARTIES_UPDATE",
+                    "PARTIES_ROLE_LIST",
+                    "PARTIES_ROLE_UPDATE",
+                    "CURRENCY_LIST",
+                    "CURRENCY_CREATE",
+                    "CURRENCY_UPDATE"
+                ]
+            }
+        },
+        "Model_5": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of role",
+                    "maxLength": 256
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of role",
+                    "maxLength": 1000
+                },
+                "permissions": {
+                    "$ref": "#/definitions/permissions",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "permissions"
+            ]
+        },
+        "Model_6": {
+            "type": "array",
+            "description": "Role ids",
+            "items": {
+                "type": "string",
+                "x-format": {
+                    "guid": true
+                }
+            }
+        },
+        "Model_7": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the charge",
+                    "maxLength": 256,
+                    "x-format": {
+                        "token": true
+                    }
+                },
+                "charge_type": {
+                    "type": "string",
+                    "description": "Type of the charge",
+                    "enum": [
+                        "fee"
+                    ]
+                },
+                "minimum": {
+                    "type": "number",
+                    "description": "Minimum amount for the charge"
+                },
+                "maximum": {
+                    "type": "number",
+                    "description": "Maximum amount for the charge"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Code for the charger",
+                    "maxLength": 256,
+                    "x-format": {
+                        "token": true
+                    }
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "description": "Status for charge"
+                }
+            }
+        },
+        "Model_8": {
+            "type": "object",
+            "properties": {
+                "is_disabled": {
+                    "type": "boolean",
+                    "description": "Participant is_disabled boolean"
+                }
+            },
+            "required": [
+                "is_disabled"
+            ]
+        },
+        "Model_9": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Login key"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address"
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "Active party"
+                }
+            }
+        }
+    }
+}
