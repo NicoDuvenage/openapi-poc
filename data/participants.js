@@ -16,10 +16,6 @@ module.exports = {
      */
     get: {
         default: async function () {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
             try {
                 const participants = await Db.participant.find({}, { order: 'name asc' })
                 return participants

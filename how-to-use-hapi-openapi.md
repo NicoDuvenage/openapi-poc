@@ -117,4 +117,146 @@ init().then(async (server) => {
 
 ## Edit the data access models and handlers
 
+Next step is to edit the data access models and handlers of the application.
+Both data access layer and handlers have directory structure of the routes described into the API deffinition.
+For example, to make `GET /participants` list all participants in the database following changes have to be done.
+
+### Edit the data access model
+
+1. Import the database into the data access module for participants: `data/participants.js`
+    ```
+    const Db = require('@mojaloop/central-services-database').Db
+    ```
+
+2. Check the get method. It should look something like that:
+    ```
+    get: {
+        default: function (req, res, callback) {
+            /**
+            * Using mock data generator module.
+            * Replace this by actual data for the api.
+            */
+            Mockgen().responses({
+                    path: '/participants',
+                    operation: 'get',
+                    response: 'default'
+            }, callback);
+        }
+    }
+    ```
+    Edit the mocked response with actual DB query.
+
+    ```
+    get: {
+        default: async function () {
+            try {
+                const participants = await Db.participant.find({}, { order: 'name asc' })
+                return participants
+            } catch (err) {
+                throw new Error(err.message)
+            }
+        }
+    }
+    ```
+### Edit the handler to use the new database access method
+
+1. Import the data access module for the participant `handlers/participants.js`
+    ```
+    const participantsData = require('../data/participants')
+    ```
+2. Check the get handler. It should look something like this:
+    ```
+    get: function getParticipants(request, h) {
+        return Boom.notImplemented();
+    }
+    ```
+    Edit the method placeholder to access the requested data:
+    
+    ```
+    get: async function getParticipants (request, h) {
+        try {
+            return await participantsData.get.default()
+        } catch (e) {
+            return Boom.boomify(e)
+        }
+    }
+    ```
+## Adding authorization to the API
+
+To protect some of the routes authorization might be added.
+
+### Edit the API deffinition and create the verification logic
+1. Edit the API deffinition file: 
+    YAML example:
+
+    ```
+    securityDefinitions:
+    api_key:
+        type: apiKey
+        name: Authorization
+        in: header
+    paths:
+    '/users/':
+        get:
+        security:
+            - api_key: []
+    ```
+2. Run the generator again. If you have previously generated files the generator will ask what it should do with any of them. Make sure the `/security` directory is added to the application. 
+
+### Register and configure the authorization plugin (hapi-now-auth, for example)[https://github.com/now-ims/hapi-now-auth]
+
+1. Install the selected plugin into the project. `npm install @now-ims/hapi-now-auth`
+2. Import the plugin
+    ```
+    const HapiNowAuth = require('@now-ims/hapi-now-auth');
+    ```
+3. Register the plugin into the init function and add the auth strategy that was defined into the API deffinition file.
+    ```
+    const init = async function(config = {port: 8080}) {
+        const server = new Hapi.Server(config);
+
+        await server.register({ plugin: HapiNowAuth });
+
+        server.auth.strategy('api_key', 'hapi-now-auth', {
+            verifyJWT: true,
+            keychain: ['secret'],
+            validate: require('./security/api_key')
+        });
+        await server.register({
+            plugin: HapiOpenAPI,
+            options: {
+                api: Path.resolve('./config/swagger.json'),
+                handlers: Path.resolve('./handlers')
+            }
+        });
+
+        await server.start();
+
+        return server;
+    };
+    ```
+4. Edit the `/security/api_key.js` file to validate the key. 
+    Mocked example:
+    ```
+    'use strict';
+
+    // current working token eyJhbGciOiJIUzI1NiIsInR5cGUiOiJKV1QifQ.eyJrZXkiOiJsZXQtbWUtaW4ifQ.x8UTyfxxSc498Lbo1pP7zW5BxgPVU_ake2lTlYaRhDc
+
+    module.exports = async (req, token, h) => {
+        let isValid = false
+        let artifacts = {}
+        const credentials = token.decodedJWT;
+        if (credentials.key === 'let-me-in') {
+            isValid = true
+            artifacts.info = 'yay'
+        } else {
+            artifacts.error = 'not authorized'
+        }
+        return { isValid, credentials, artifacts }
+    }
+    ```
+
+## Testing framework
+
+...
 

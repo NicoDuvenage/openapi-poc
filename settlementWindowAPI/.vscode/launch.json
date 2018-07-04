@@ -10,6 +10,12 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}/server"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test",
+      "program": "${workspaceFolder}/tests/settlementWindow/all.js"
     }
   ]
 }

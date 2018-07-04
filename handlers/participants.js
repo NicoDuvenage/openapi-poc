@@ -1,7 +1,7 @@
 'use strict';
 
 const Boom = require('boom');
-const Data = require('../data/participants')
+const participantsData = require('../data/participants')
 /**
  * Operations on /participants
  */
@@ -15,7 +15,7 @@ module.exports = {
      */
     get: async function getParticipants (request, h) {
         try {
-            return await Data.get.default()
+            return await participantsData.get.default()
         } catch (e) {
             return Boom.boomify(e)
         }

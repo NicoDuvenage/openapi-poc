@@ -5,8 +5,8 @@ const HapiOpenAPI = require('hapi-openapi');
 const Path = require('path');
 const HapiNowAuth = require('@now-ims/hapi-now-auth');
 
-const init = async function() {
-    const server = new Hapi.Server({port: 8080});
+const init = async function(config = {port: 8080}) {
+    const server = new Hapi.Server(config);
 
     await server.register({ plugin: HapiNowAuth });
 
@@ -33,3 +33,7 @@ init().then((server) => {
 
     console.log(`Server running on ${server.info.host}:${server.info.port}`);
 });
+
+module.exports = {
+    init
+}
