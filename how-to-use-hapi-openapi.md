@@ -4,7 +4,9 @@
 
 1. To be sure the file will pass without errors, load it into the [swagger editor](http://editor.swagger.io)
 2. When no errors are found from the editor export the file as JSON
-3. Install global building tools 
+3. Install global building tools (Note : If premission errors are thrown during the installation
+     , do not try an re-install with 'sudo'. 
+     Use the following options : https://docs.npmjs.com/getting-started/fixing-npm-permissions)
       ```
       $ npm install -g yo
       $ npm install -g generator-swaggerize
