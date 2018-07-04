@@ -203,7 +203,7 @@ To protect some of the routes authorization might be added.
     ```
 2. Run the generator again. If you have previously generated files the generator will ask what it should do with any of them. Make sure the `/security` directory is added to the application. 
 
-### Register and configure the authorization plugin (hapi-now-auth, for example)[https://github.com/now-ims/hapi-now-auth]
+### Register and configure the authorization plugin [hapi-now-auth, for example](https://github.com/now-ims/hapi-now-auth)
 
 1. Install the selected plugin into the project. `npm install @now-ims/hapi-now-auth`
 2. Import the plugin

@@ -28,7 +28,7 @@ Test('/settlementWindow/all', function (t) {
                     path: '/settlementWindow/all',
                     operation: 'get',
                     headers: {
-                        Authorize: 'eyJhbGciOiJIUzI1NiIsInR5cGUiOiJKV1QifQ.eyJrZXkiOiJsZXQtbWUtaW4ifQ.x8UTyfxxSc498Lbo1pP7zW5BxgPVU_ake2lTlYaRhDc'
+                        Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cGUiOiJKV1QifQ.eyJrZXkiOiJsZXQtbWUtaW4ifQ.x8UTyfxxSc498Lbo1pP7zW5BxgPVU_ake2lTlYaRhDc'
                     }
                 }, function (error, mock) {
                     return error ? reject(error) : resolve(mock);
