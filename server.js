@@ -17,7 +17,7 @@ const init = async function() {
         plugin: HapiOpenAPI,
         options: {
             api: Path.resolve('./central_ledger.json'),
-            handlers: Path.resolve('./cl-openapi/handlers')
+            handlers: Path.resolve('./handlers')
         }
     });
 

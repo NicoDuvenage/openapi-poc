@@ -1,0 +1,149 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "MOJALOOP Central Ledger",
+        "description": "Mojaloop settlement window closure API"
+    },
+    "host": "localhost:8080",
+    "basePath": "/v1",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "paths": {
+        "/settlementWindow/all": {
+            "get": {
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "summary": "List all settlement window records",
+                "operationId": "getSettlementWindows",
+                "tags": [
+                    "settlementWindows"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SettlementWindowRecords"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "401": {
+                        "description": "Authorisation information is missing or invalid."
+                    },
+                    "404": {
+                        "description": "No settlement window records found."
+                    }
+                }
+            }
+        },
+        "/settlementWindow/{settlementWindowId}": {
+            "get": {
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "summary": "Returns a settlement window record per id.",
+                "operationId": "getSettlementWindowRecord",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "settlementWindowId",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "settlementWindow"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SettlementWindowRecord"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. Settlement window id must be an Integer and larger than 0."
+                    },
+                    "401": {
+                        "description": "Authorisation information is missing or invalid."
+                    },
+                    "404": {
+                        "description": "A settlement window with this id does not exist."
+                    }
+                }
+            }
+        },
+        "/settlementWindow/{settlementWindowId}/close": {
+            "post": {
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "summary": "Close a settlement window with given id",
+                "operationId": "closeSettlementWindow",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "settlementWindowId",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "settlementWidowClosure"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settlement window closed"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "SettlementWindowRecord": {
+            "type": "object",
+            "properties": {
+                "settlementWindowId": {
+                    "type": "integer"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "createDate": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "settlementWindowId",
+                "state",
+                "createDate"
+            ]
+        },
+        "SettlementWindowRecords": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/SettlementWindowRecord"
+            }
+        }
+    }
+}
