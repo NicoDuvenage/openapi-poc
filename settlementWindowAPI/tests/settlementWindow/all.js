@@ -6,6 +6,11 @@ const HapiOpenAPI = require('hapi-openapi');
 const Path = require('path');
 const Mockgen = require('../../data/mockgen.js');
 const InitServer = require('../../server').init
+const testAPIOptions = {
+    api: Path.resolve('/home/vgenev/mojaloop/PI2/openapi-petstore/bh-template/cl-openapi/settlementWindowAPI/config/swagger.json'),
+    handlers: Path.resolve('/home/vgenev/mojaloop/PI2/openapi-petstore/bh-template/cl-openapi/settlementWindowAPI/handlers'),
+    outputvalidation: true
+} 
 /**
  * Test for /settlementWindow/all
  */
@@ -20,7 +25,9 @@ Test('/settlementWindow/all', function (t) {
      */
     t.test('test getSettlementWindows get operation', async function (t) {
 
-        await InitServer({port: 3080}).then(async (server) => {
+        await InitServer({
+            port: 3080
+        }, testAPIOptions).then(async (server) => {
             server.plugins.openapi.setHost(server.info.host + ':' + server.info.port);
 
             const requests = new Promise((resolve, reject) => {
@@ -30,6 +37,7 @@ Test('/settlementWindow/all', function (t) {
                     headers: {
                         Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cGUiOiJKV1QifQ.eyJrZXkiOiJsZXQtbWUtaW4ifQ.x8UTyfxxSc498Lbo1pP7zW5BxgPVU_ake2lTlYaRhDc'
                     }
+    
                 }, function (error, mock) {
                     return error ? reject(error) : resolve(mock);
                 });
@@ -43,7 +51,10 @@ Test('/settlementWindow/all', function (t) {
             //Mock request Path templates({}) are resolved using path parameters
             const options = {
                 method: 'get',
-                url: '/v1' + mock.request.path
+                url: '/v1' + mock.request.path,
+                headers: {
+                    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cGUiOiJKV1QifQ.eyJrZXkiOiJsZXQtbWUtaW4ifQ.x8UTyfxxSc498Lbo1pP7zW5BxgPVU_ake2lTlYaRhDc'
+                }
             };
             if (mock.request.body) {
                 //Send the request body

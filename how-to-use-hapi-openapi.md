@@ -258,5 +258,30 @@ To protect some of the routes authorization might be added.
 
 ## Testing framework
 
-...
+The generator adds tests as well. They are organized in the same manner as the data and handlers.
+The tests are for the API only. Tape is used.
+What is neccesary to be done, is to import the init function from our server module, to be imported with the same plugins and move the tests in the .then() part of the init promise: 
 
+change this: 
+```
+            const server = new Hapi.Server();
+
+            await server.register({
+                plugin: HapiOpenAPI,
+                options: {
+                    api: Path.resolve(__dirname, '../../config/swagger.json'),
+                    handlers: Path.join(__dirname, '../../handlers'),
+                    outputvalidation: true
+                }
+            });
+            <all tests are here>
+```
+into something like that:
+```
+            await InitServer({
+            port: 3080
+        }, testAPIOptions).then(async (server) => {
+            server.plugins.openapi.setHost(server.info.host + ':' + server.info.port);
+            <all tests are here>
+        })
+```

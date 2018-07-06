@@ -27,7 +27,11 @@ module.exports = {
      * produces: 
      * responses: default
      */
-    post: function postParticipants(request, h) {
-        return Boom.notImplemented();
+    post: async function postParticipants(request, h) {
+        try {
+            return await participantsData.post.default(request)
+        } catch (e) {
+            return Boom.boomify(e)
+        }
     }
 };

@@ -16,8 +16,8 @@ const init = async function() {
     await server.register({
         plugin: HapiOpenAPI,
         options: {
-            api: Path.resolve('./central_ledger.json'),
-            handlers: Path.resolve('./handlers')
+            api: Path.resolve('/home/vgenev/mojaloop/PI2/openapi-petstore/bh-template/cl-openapi/cl-openapi/central_ledger.json'),
+            handlers: Path.resolve('/home/vgenev/mojaloop/PI2/openapi-petstore/bh-template/cl-openapi/cl-openapi/handlers')
         }
     });
 

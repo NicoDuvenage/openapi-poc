@@ -5,7 +5,15 @@ const HapiOpenAPI = require('hapi-openapi');
 const Path = require('path');
 const HapiNowAuth = require('@now-ims/hapi-now-auth');
 
-const init = async function(config = {port: 8080}) {
+const openAPIOptions = {
+    api: Path.resolve('./config/swagger.json'),
+    handlers: Path.resolve('./handlers')
+}
+
+
+const init = async function(config = {
+    port: 8080
+    }, openAPIPluginOptions = openAPIOptions) {
     const server = new Hapi.Server(config);
 
     await server.register({ plugin: HapiNowAuth });
@@ -17,10 +25,7 @@ const init = async function(config = {port: 8080}) {
     });
     await server.register({
         plugin: HapiOpenAPI,
-        options: {
-            api: Path.resolve('./config/swagger.json'),
-            handlers: Path.resolve('./handlers')
-        }
+        options: openAPIPluginOptions
     });
 
     await server.start();

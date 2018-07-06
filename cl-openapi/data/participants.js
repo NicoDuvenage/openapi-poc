@@ -33,16 +33,16 @@ module.exports = {
      * operationId: postParticipants
      */
     post: {
-        default: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/participants',
-                operation: 'post',
-                response: 'default'
-            }, callback);
+        default: async function (req) {
+            let participant = req.payload
+            try {
+                return await Db.participant.insert({
+                  name: participant.name,
+                  currencyId: participant.currency
+                })
+              } catch (err) {
+                throw new Error(err.message)
+              }
         }
     }
 };
